@@ -1,17 +1,25 @@
+# wybieramy wersję dockera
 version: '3'
-
+# definiujemy serwisy (te których konfiguracje tworzyliśmy w katalogu docker)
 services:
+# nazwa własna usługi
   web:
+  # w jaki sposób ten serwer będzie budowany
     build:
+    # z którego miejsca mamy sobie odczytać ścieżkę
       context: .
       dockerfile: docker/nginx/Dockerfile
+      # oznaczamy porty
     ports:
       - "8080:80"
+      # decyduje o tym, które zasoby z folderu projektu przypiszemy pod naszą usługę 
     volumes:
       - .:/app/
+      # zależność pomiędzy kontenerami, dokładnie: które usługi powiązemy z naszym serwisem
     links:
       - php
 
+  # nazwa własna usługi
   php:
     build:
       context: .
