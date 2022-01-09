@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="../css/search.css">
+    <link rel="stylesheet" type="text/css" href="public/css/search.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://kit.fontawesome.com/5ab342c5ec.js" crossorigin="anonymous"></script>
@@ -15,10 +15,10 @@
 <body>
     <div class="parent">
         <nav> 
-           <a href="./dashboard.html"><img class="logo" src="../materials/logo_dark.svg" alt="Guard logo"></a>
+           <a href="/"><img class="logo" src="public/materials/logo_dark.svg" alt="Guard logo"></a>
             <p class="login-container">
-                <a id="login" href="./login.html">Zaloguj się</a>
-                <a id="signup" href="./signin.html">Rejestracja</a>
+                <a id="login" href="/login">Zaloguj się</a>
+                <a id="signup" href="signin.php">Rejestracja</a>
             </p>
         </nav>
     </div>
@@ -145,17 +145,17 @@
             <div id="checkboxes">
                     <input type="checkbox" name="rGroup" value="dog" id="animal1" checked="checked" />
                     <label class="whatever" for="animal1">
-                        <img id="dog-img" src="../materials/search/dog.svg">
+                        <img id="dog-img" src="public/materials/search/dog.svg">
                         <span class="text-type">Pies</span>
                     </label>
                     <input type="checkbox" name="rGroup" value="cat" id="animal2" />
                     <label class="whatever" for="animal2">
-                        <img id="cat-img" src="../materials/search/cat.svg">
+                        <img id="cat-img" src="public/materials/search/cat.svg">
                         <span class="text-type">Kot</span>
                     </label>
                     <input type="checkbox" name="rGroup" value="other" id="animal3" />
                     <label class="whatever" for="animal3">
-                        <img id="other-img" src="../materials/search/other.svg">
+                        <img id="other-img" src="public/materials/search/other.svg">
                         <span class="text-type">Inne</span>
                     </label>
                     <input type="checkbox" name="rGroup" value="all" id="animal4" />

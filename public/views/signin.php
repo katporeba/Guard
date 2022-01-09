@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="../css/signin.css">
+    <link rel="stylesheet" type="text/css" href="public/css/signin.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://kit.fontawesome.com/5ab342c5ec.js" crossorigin="anonymous"></script>
@@ -15,25 +15,25 @@
 <body>
     <div class="parent">
         <nav> 
-           <a href="./dashboard.html"><img class="logo" src="../materials/logo_dark.svg" alt="Guard logo"></a>
+           <a href="/"><img class="logo" src="public/materials/logo_dark.svg" alt="Guard logo"></a>
             <p class="login-container">
-                <a id="login" href="./login.html">Zaloguj się</a>
-                <a id="signup" href="./signin.html">Rejestracja</a>
+                <a id="login" href="/login">Zaloguj się</a>
+                <a id="signup" href="/signUp">Rejestracja</a>
             </p>
         </nav>
     </div>
     <div class="container">
         <div id="img-container">
             <div class="pics">
-                <img src="../materials/wave/small/1_front.png" alt="" unselectable="on">
-                <img src="../materials/wave/small/2.png" alt="" unselectable="on">
-                <img src="../materials/wave/small/3.png" alt="" unselectable="on">
+                <img src="public/materials/wave/small/1_front.png" alt="" unselectable="on">
+                <img src="public/materials/wave/small/2.png" alt="" unselectable="on">
+                <img src="public/materials/wave/small/3.png" alt="" unselectable="on">
             </div>
-            <img id="background-pic3" src="../materials/handshake.gif">
+            <img id="background-pic3" src="public/materials/handshake.gif">
         </div>
         <div class="left-side">
             <div id="main-text"><b>Zarejestruj się</b> i zyskaj dodatkowe funkcje</div>
-            <div id="no-account">Posiadasz już konto? <a href="./login.html"><b>Zaloguj się</b></a></div>
+            <div id="no-account">Posiadasz już konto? <a href="login.php"><b>Zaloguj się</b></a></div>
             <div id="choose-type-container">
                 <div onclick="location.href='./signin-personal.html'" style="cursor:pointer" id="personal-account">
                     <!-- <img src="../materials/person.svg"> -->

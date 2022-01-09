@@ -15,10 +15,10 @@
 <body>
     <div class="parent">
         <nav> 
-           <a href="dashboard.php"><img class="logo" src="public/materials/logo_dark.svg" alt="Guard logo"></a>
+           <a href="/"><img class="logo" src="public/materials/logo_dark.svg" alt="Guard logo"></a>
             <p class="login-container">
-                <a id="login" href="./login.html">Zaloguj się</a>
-                <a id="signup" href="./signin.html">Rejestracja</a>
+                <a id="login" href="/login">Zaloguj się</a>
+                <a id="signup" href="signin.php">Rejestracja</a>
             </p>
         </nav>
     </div>
@@ -29,18 +29,27 @@
                 <img src="public/materials/wave/small/2.png" alt="" unselectable="on">
                 <img src="public/materials/wave/small/3.png" alt="" unselectable="on">
             </div>
-            <img id="background-pic3" src="../materials/222.gif">
+            <img id="background-pic3" src="public/materials/222.gif">
 
         </div>
         <div class="left-side">
             <div id="main-text"><b>Zaloguj się</b> i zyskaj dodatkowe funkcje</div>
-            <form>
+            <div class="messages">
+                <?php
+                if(isset($messages)){
+                    foreach($messages as $message) {
+                        echo $message;
+                    }
+                }
+                ?>
+            </div>
+            <form action="login" method="post">
                 <div class="text-input">E-mail</div>
-                <input class="input-with-border" type="text" placeholder="Podaj swój e-mail">
+                <input name="email" class="input-with-border" type="text" placeholder="Podaj swój e-mail">
                 <div class="text-input">Hasło</div>
 
                 <div id="password-container">
-                    <input class="input-with-border" type="password" placeholder="Podaj swoje hasło">
+                    <input name="password" class="input-with-border" type="password" placeholder="Podaj swoje hasło">
                     <i id="input_img" class="far fa-eye"></i>
                 </div>
 
@@ -51,10 +60,9 @@
                     </div>
                     <a href="#">Zapomniałeś hasła?</a> 
                 </label>
-
+                <button id="log-in" type="submit">Zaloguj się</button>
             </form>
-            <button id="log-in">Zaloguj się</button>
-            <div id="no-account">Nie posiadasz konta? <a href="./signin.html"><b>Zarejestruj się</b></a></div>
+            <div id="no-account">Nie posiadasz konta? <a href="signin.php"><b>Zarejestruj się</b></a></div>
         </div>
     </div>
 </body>

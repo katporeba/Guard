@@ -19,10 +19,10 @@
     <div id="main-container">
         <div class="parent" id="not-sticky">
             <nav>
-                <a href="dashboard.php"><img class="logo" src="../materials/logo_dark.svg" alt="Guard logo"></a>
+                <a href="dashboard.php"><img class="logo" src="public/materials/logo_dark.svg" alt="Guard logo"></a>
                 <p class="login-container">
-                    <a id="login" href="./login.html">Zaloguj się</a>
-                    <a id="signup" href="./signin.html">Rejestracja</a>
+                    <a id="login" href="login.php">Zaloguj się</a>
+                    <a id="signup" href="signin.php">Rejestracja</a>
                 </p>
             </nav>
             <div id="scroll-form">
@@ -30,17 +30,17 @@
                     <div id="checkboxes">
                         <input type="checkbox" name="rGroup" value="dog" id="animal1" checked="checked" />
                         <label class="whatever" for="animal1">
-                            <img id="dog-img" src="../materials/search/dog.svg">
+                            <img id="dog-img" src="public/materials/search/dog.svg">
                             <span class="text-type">Pies</span>
                         </label>
                         <input type="checkbox" name="rGroup" value="cat" id="animal2" />
                         <label class="whatever" for="animal2">
-                            <img id="cat-img" src="../materials/search/cat.svg">
+                            <img id="cat-img" src="public/materials/search/cat.svg">
                             <span class="text-type">Kot</span>
                         </label>
                         <input type="checkbox" name="rGroup" value="other" id="animal3" />
                         <label class="whatever" for="animal3">
-                            <img id="other-img" src="../materials/search/other.svg">
+                            <img id="other-img" src="public/materials/search/other.svg">
                             <span class="text-type">Inne</span>
                         </label>
                         <input type="checkbox" name="rGroup" value="all" id="animal4" />
@@ -170,11 +170,11 @@
             <div id="first-post" class="post">
                 <div id="first-column">
                     <div class="post-image">
-                        <img src="../materials/celine-sayuri-tagami-2s6ORaJY6gI-unsplash.jpg">
+                        <img src="public/uploads/<?= $project->getImage() ?>">
                     </div>
                     <div class="content">
                         <div class="post-informations">
-                            <div class="post-name">Danuta</div>
+                            <div class="post-name"><?= $project->getTitle() ?></div>
                             <div class="post-gender"><i class="fas fa-venus"></i></div>
                         </div>
                         <div class="post-rest">
@@ -196,7 +196,7 @@
 
                 <div id="second-column">
                     <div id="post-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
-                    <div id="post-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat sagittis lorem, quis interdum sapien </div>
+                    <div id="post-description"><?= $project->getDescription() ?></div>
                     <div id="map-container">
                         <i class="fas fa-map-marker-alt"></i>
                         <div id="map-text">
@@ -244,7 +244,7 @@
 
             <div id="second-post" class="post">
                 <div class="post-image">
-                    <img src="../materials/jamie-street-uNNCs5kL70Q-unsplash.jpg">
+                    <img src="public/materials/jamie-street-uNNCs5kL70Q-unsplash.jpg">
                 </div>
                 <div class="content">
                     <div class="post-informations">
@@ -270,7 +270,7 @@
 
             <div id="third-post" class="post">
                 <div class="post-image">
-                    <img src="../materials/undine-tackmann-8mxSINYFoSw-unsplash.jpg">
+                    <img src="public/materials/undine-tackmann-8mxSINYFoSw-unsplash.jpg">
                 </div>
                 <div class="content">
                     <div class="post-informations">

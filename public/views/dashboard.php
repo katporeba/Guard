@@ -31,10 +31,10 @@
     <img id="background-pic3" src="public/materials/dog-white.png">
     <div class="parent">
         <nav> 
-            <a href="javascript:window.location.href=window.location.href"><img class="logo-light" src="../materials/logo2.svg" alt="Guard logo"></a>
+            <a href="javascript:window.location.href=window.location.href"><img class="logo-light" src="public/materials/logo2.svg" alt="Guard logo"></a>
             <p class="login-container">
-                <a id="login" href="./login.html">Zaloguj się</a>
-                <a id="signup" href="./signin.html">Rejestracja</a>
+                <a id="login" href="/login">Zaloguj się</a>
+                <a id="signup" href="signin.php">Rejestracja</a>
             </p>
         </nav>
     </div>
@@ -45,7 +45,7 @@
             <img src="public/materials/wave/3.png" alt="" unselectable="on">
         </div>
         <div class="left-side">
-            <div class="search-bar" onclick="location.href='./choose-animal.html'">
+            <div class="search-bar" onclick="location.href='/chooseAnimal'">
                 <span class="iconify" data-icon="akar-icons:search" style="color: black;" data-height="23"></span>
                 <span class="text-animation">Znajdź ogłoszenie  </span>
             </div>
