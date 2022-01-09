@@ -19,17 +19,25 @@ class ProjectController extends AppController {
         $this->projectRepository = new ProjectRepository();
     }
 
+    public function search() {
+        $projects = $this->projectRepository->getProjects();
+        $this->render('search', ['projects' => $projects]);
+    }
+
     public function addProject() {
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file($_FILES['file']['tmp_name'], dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']);
 
             // TODO create new project object and save it in database
             $project = new Project($_POST['name-animal'], $_POST['post-desc'], $_FILES['file']['name']);
-            $animal = new Animal($_POST['name-animal'],$_POST['age'], $_POST['genderCheck'], $_POST['chooseSize'], $_POST['healthy'], $_POST['Color'], $_POST['weight']);
+            $animal = new Animal($_POST['name-animal'],$_POST['age'], $_POST['genderCheck'], $_POST['chooseSize'], $this->checkIfHealthy($_POST['healthy']), $_POST['Color'], $_POST['weight']);
 
             $this->projectRepository->addProject($project, $animal);
 
-            return $this->render('search', ['messages' => $this->message, 'project'=>$project, 'animal'=>$animal]);
+            return $this->render('search', [
+                'messages' => $this->message,
+                'projects' => $this->projectRepository->getProjects()
+            ]);
         }
         return $this->render('add-post', ['messages' => $this->message]);
     }
@@ -45,5 +53,12 @@ class ProjectController extends AppController {
             return false;
         }
         return true;
+    }
+
+    private function checkIfHealthy($health) {
+        if(!$health == 'Zdrowy/a') {
+            return 'Wymaga leczenia';
+        }
+        else return $health;
     }
 }

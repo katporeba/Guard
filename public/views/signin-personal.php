@@ -15,45 +15,57 @@
 <body>
     <div class="parent">
         <nav> 
-           <a href="dashboard.php"><img class="logo" src="../materials/logo_dark.svg" alt="Guard logo"></a>
+           <a href="/"><img class="logo" src="public/materials/logo_dark.svg" alt="Guard logo"></a>
             <p class="login-container">
-                <a id="login" href="login.php">Zaloguj się</a>
-                <a id="signup" href="signin.php">Rejestracja</a>
+                <a id="login" href="/login">Zaloguj się</a>
+                <a id="signup" href="/signUp">Rejestracja</a>
             </p>
         </nav>
     </div>
     <div class="container">
         <div id="img-container">
             <div class="pics">
-                <img src="../materials/wave/small/1_front.png" alt="" unselectable="on">
-                <img src="../materials/wave/small/2.png" alt="" unselectable="on">
-                <img src="../materials/wave/small/3.png" alt="" unselectable="on">
+                <img src="public/materials/wave/small/1_front.png" alt="" unselectable="on">
+                <img src="public/materials/wave/small/2.png" alt="" unselectable="on">
+                <img src="public/materials/wave/small/3.png" alt="" unselectable="on">
             </div>
-            <img id="background-pic3" src="../materials/444.gif">
+            <img id="background-pic3" src="public/materials/444.gif">
         </div>
         <div class="left-side">
             <div id="main-text"><b>Zarejestruj się</b> jako osoba prywatna</div>
-            <form>
+            <?php
+            if(isset($messages)){
+                foreach($messages as $message) {
+                    echo $message;
+                }
+            }
+            ?>
+            <form method="post" action="signUpPersonal" enctype="multipart/form-data">
                 <div class="text-input">Nazwa użytkownika</div>
-                <input class="input-with-border" type="text" placeholder="Podaj swoją nazwę">
-                <div class="text-input">E-mail</div>
-                <input class="input-with-border" type="text" placeholder="Podaj swój e-mail">
-                <div class="text-input">Hasło</div>
+                <input name="user-name" class="input-with-border" type="text" placeholder="Podaj swoją nazwę">
 
+                <div class="text-input">E-mail</div>
+                <input name="e-mail" class="input-with-border" type="text" placeholder="Podaj swój e-mail">
+
+                <div class="text-input">Hasło</div>
                 <div id="password-container">
-                    <input class="input-with-border" type="password" placeholder="Podaj swoje hasło">
+                    <input name="password" class="input-with-border" type="password" placeholder="Podaj swoje hasło">
+                    <i id="input_img" class="far fa-eye"></i>
+                </div>
+                <br>
+                <div id="password-container">
+                    <input name="confirmed-password" class="input-with-border" type="password" placeholder="Podaj ponownie swoje hasło">
                     <i id="input_img" class="far fa-eye"></i>
                 </div>
 
                 <label class="logout-container">
                     <div id="logout-div">
-                        <input type="checkbox" id="do-not-logout" name="log1" value="do-not-logout">
+                        <input type="checkbox" id="do-not-logout" name="terms" value="do-not-logout">
                         <span id="accept-terms">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu ut velit nunc gravida mattis quam phasellus.</span>
                     </div>
                 </label>
-
+                <button type="submit" id="log-in">Zarejestruj się</button>
             </form>
-            <button id="log-in">Zarejestruj się</button>
         </div>
     </div>
 </body>

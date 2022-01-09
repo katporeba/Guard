@@ -33,13 +33,13 @@
         </div>
         <div class="left-side">
             <div id="main-text"><b>Zarejestruj się</b> i zyskaj dodatkowe funkcje</div>
-            <div id="no-account">Posiadasz już konto? <a href="login.php"><b>Zaloguj się</b></a></div>
+            <div id="no-account">Posiadasz już konto? <a href="/login"><b>Zaloguj się</b></a></div>
             <div id="choose-type-container">
-                <div onclick="location.href='./signin-personal.html'" style="cursor:pointer" id="personal-account">
+                <div onclick="location.href='/signUpPersonal'" style="cursor:pointer" id="personal-account">
                     <!-- <img src="../materials/person.svg"> -->
                     <span class="text-type">Jestem <b>osobą prywatną</b></span>
                 </div>
-                <div onclick="location.href='./signin-shelter.html'" style="cursor:pointer" id="shelter-account">
+                <div onclick="location.href='/signUpShelter'" style="cursor:pointer" id="shelter-account">
                     <!-- <img src="../materials/shelter.svg"> -->
                     <span class="text-type">Jestem <b>schroniskiem</b></span>
                 </div>

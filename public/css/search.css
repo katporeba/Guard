@@ -169,7 +169,7 @@ nav a:hover,a:active {
     filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.14));
 }
 
-#checkboxes input[type=checkbox]{
+#checkboxes input[type=checkbox],#checkboxes input[type=radio]{
     display: none;
 }
 
@@ -182,13 +182,13 @@ nav a:hover,a:active {
     margin-bottom: 0.5em;
 }
 
-#checkboxes input[type=checkbox]:checked + .whatever {
+#checkboxes input[type=checkbox]:checked + .whatever, #checkboxes input[type=radio]:checked + .whatever {
     background-color: #8F6F55;
     color: #ffffff;
     filter: drop-shadow(0px 4px 40px rgba(0, 0, 0, 0.22));
 }
 
-#scroll-form #checkboxes input[type=checkbox]:checked + .whatever {
+#scroll-form #checkboxes input[type=checkbox]:checked + .whatever, #scroll-form #checkboxes input[type=radio]:checked + .whatever {
  filter: none;
 }
 
@@ -418,7 +418,7 @@ select::-ms-expand {
     background: conic-gradient(from 180deg at 50% 50%, #C84242 0deg, #FFB038 61.87deg, #499E52 127.5deg, #2B8BD0 245.62deg, #D645C7 348.75deg, #C84242 360deg);
 }
 
-#color #checkboxes input[type=checkbox]:checked + .whatever {
+#color #checkboxes input[type=checkbox]:checked + .whatever, #color #checkboxes input[type=radio]:checked + .whatever {
     width: 2em;
     height: 2em;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
@@ -431,7 +431,7 @@ select::-ms-expand {
     justify-content: space-between;
 }
 
-#input-container input[type="checkbox"] {
+#input-container input[type="checkbox"], #input-container input[type="radio"]  {
     display: none;
 }
 
@@ -624,7 +624,7 @@ a {
     color: #000000;
 }
 
-.post-informations .post-gender {
+.woman, .man {
     filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.09));
     background: #BD88B2;
     height: 2.2em;
@@ -634,6 +634,10 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.man {
+    background: #4678C5 !important;
 }
 
 .post-rest {
@@ -708,6 +712,7 @@ a {
     border: none;
     background: #FFFFFF;
     filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.09));
+    text-align: center;
 }
 
 .post-date {
@@ -1036,7 +1041,9 @@ a {
 #add-post .left-side > * {
     margin-left: 10%;
 }
-
+#add-post #first-one > * {
+    padding: 0.5em;
+}
 #first-one {
     scroll-snap-align: start;
     height: 100vh;

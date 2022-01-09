@@ -34,7 +34,7 @@
             <a href="javascript:window.location.href=window.location.href"><img class="logo-light" src="public/materials/logo2.svg" alt="Guard logo"></a>
             <p class="login-container">
                 <a id="login" href="/login">Zaloguj się</a>
-                <a id="signup" href="signin.php">Rejestracja</a>
+                <a id="signup" href="/signUp">Rejestracja</a>
             </p>
         </nav>
     </div>

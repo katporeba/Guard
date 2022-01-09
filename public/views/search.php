@@ -19,10 +19,10 @@
     <div id="main-container">
         <div class="parent" id="not-sticky">
             <nav>
-                <a href="dashboard.php"><img class="logo" src="public/materials/logo_dark.svg" alt="Guard logo"></a>
+                <a href="/"><img class="logo" src="public/materials/logo_dark.svg" alt="Guard logo"></a>
                 <p class="login-container">
-                    <a id="login" href="login.php">Zaloguj się</a>
-                    <a id="signup" href="signin.php">Rejestracja</a>
+                    <a id="login" href="/login">Zaloguj się</a>
+                    <a id="signup" href="/signUp">Rejestracja</a>
                 </p>
             </nav>
             <div id="scroll-form">
@@ -170,38 +170,38 @@
             <div id="first-post" class="post">
                 <div id="first-column">
                     <div class="post-image">
-                        <img src="public/uploads/<?= $project->getImage() ?>">
+                        <img src="public/uploads/<?= $projects[0]['project']->getImage() ?>">
                     </div>
                     <div class="content">
                         <div class="post-informations">
-                            <div class="post-name"><?= $project->getTitle() ?></div>
-                            <div class="post-gender"><i class="fas fa-venus"></i></div>
+                            <div class="post-name"><?= $projects[0]['project']->getTitle() ?></div>
+                            <div class="<?= $projects[0]['animal']->getGender() ?>"></div>
                         </div>
                         <div class="post-rest">
                             <div class="first-line">
                                 <div class="post-localization">
                                     <i class="fas fa-map-marker-alt"></i>
-                                    <div class="post-text">Kraków</div>
+                                    <div class="post-text"><?= $projects[0]['shelter']->getCity() ?></div>
                                 </div>
-                                <div class="post-age">3 lata</div>
+                                <div class="post-age">Lat: <?= $projects[0]['animal']->getAge() ?></div>
                             </div>
                             <div class="second-line">
-                                <div class="post-size">Mała</div>
-                                <div class="post-health">Zdrowa</div>
+                                <div class="post-size"><?= $projects[0]['animal']->getSize() ?></div>
+                                <div class="post-health"><?= $projects[0]['animal']->getHealth() ?></div>
                             </div>
                         </div>
-                        <div class="post-date">Dodano <b>19.10.2021 16:30</b></div>
+                        <div class="post-date">Dodano <b><?= $projects[0]['date'] ?></b></div>
                     </div>
                 </div>
 
                 <div id="second-column">
-                    <div id="post-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
-                    <div id="post-description"><?= $project->getDescription() ?></div>
+                    <div id="post-title"><?= $projects[0]['project']->getTitle() ?></div>
+                    <div id="post-description"><?= $projects[0]['project']->getDescription() ?></div>
                     <div id="map-container">
                         <i class="fas fa-map-marker-alt"></i>
                         <div id="map-text">
-                            <div id="shelter-name">Schronisko w Krakowie</div>
-                            <div id="shelter-address">ul Rybna 3</div>
+                            <div id="shelter-name">Schronisko - <?= $projects[0]['shelter']->getCity() ?></div>
+                            <div id="shelter-address">ul <?= $projects[0]['shelter']->getStreet() ?> <?= $projects[0]['shelter']->getStreetNumber() ?></div>
                         </div>
                         <div id="icon-container">
                             <i class="fas fa-map-marked-alt"></i>
@@ -241,70 +241,33 @@
                     </div>
                 </div>
             </div>
-
+            <?php for ($i=1;$i<count($projects);$i++): ?>
             <div id="second-post" class="post">
                 <div class="post-image">
-                    <img src="public/materials/jamie-street-uNNCs5kL70Q-unsplash.jpg">
+                    <img src="public/uploads/<?= $projects[$i]['project']->getImage() ?>">
                 </div>
                 <div class="content">
                     <div class="post-informations">
-                        <div class="post-name">Ryszard</div>
-                        <div class="post-gender"><i class="fas fa-mars"></i></div>
+                        <div class="post-name"><?= $projects[$i]['project']->getTitle() ?></div>
+                        <div class="<?= $projects[$i]['animal']->getGender() ?>"></div>
                     </div>
                     <div class="post-rest">
                         <div class="first-line">
                             <div class="post-localization">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <div class="post-text">Nowy Sącz</div>
+                                <div class="post-text"><?= $projects[$i]['shelter']->getCity() ?></div>
                             </div>
-                            <div class="post-age">5 lat</div>
+                            <div class="post-age">Lat: <?= $projects[$i]['animal']->getAge() ?></div>
                         </div>
                         <div class="second-line">
-                            <div class="post-size">Mały</div>
-                            <div class="post-health">Zdrowy</div>
+                            <div class="post-size"><?= $projects[$i]['animal']->getSize() ?></div>
+                            <div class="post-health"><?= $projects[$i]['animal']->getHealth() ?></div>
                         </div>
                     </div>
-                    <div class="post-date">Dodano <b>19.10.2021 16:30</b></div>
+                    <div class="post-date">Dodano <b><?= $projects[$i]['date'] ?></b></div>
                 </div>
             </div>
-
-            <div id="third-post" class="post">
-                <div class="post-image">
-                    <img src="public/materials/undine-tackmann-8mxSINYFoSw-unsplash.jpg">
-                </div>
-                <div class="content">
-                    <div class="post-informations">
-                        <div class="post-name">Stefan</div>
-                        <div class="post-gender"><i class="fas fa-mars"></i></div>
-                    </div>
-                    <div class="post-rest">
-                        <div class="first-line">
-                            <div class="post-localization">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <div class="post-text">Kraków</div>
-                            </div>
-                            <div class="post-age">6 mies.</div>
-                        </div>
-                        <div class="first-line">
-                            <div class="post-size">Mały</div>
-                            <div class="post-health">Wymaga leczenia</div>
-                        </div>
-                    </div>
-                    <div class="post-date">Dodano <b>19.10.2021 16:30</b></div>
-                </div>
-            </div>
-
-            <div id="first-post" class="post">
-            </div>
-
-            <div id="second-post" class="post">
-            </div>
-
-            <div id="third-post" class="post">
-            </div>
-
-            <div id="fourth-post" class="post">
-            </div>
+            <?php endfor; ?>
         </div>
     </div>
 
@@ -316,12 +279,19 @@
             output.innerHTML = this.value;
         }
 
-        elements = document.getElementsByClassName("fas fa-mars");
-        for (var i = 0; i < elements.length; i++) {
-            var parent = elements[i].parentNode;
-            if (parent.classList.contains("post-gender")) 
-                parent.style.backgroundColor="#4678C5";
-        }  
+        elementsWoman = document.getElementsByClassName("woman");
+        elementsMan = document.getElementsByClassName("man");
+
+        for (var i = 0; i < elementsWoman.length; i++) {
+            elementsWoman[i].innerHTML = '<i class="fas fa-venus"></i>';
+        }
+        for (var i = 0; i < elementsMan.length; i++) {
+            elementsMan[i].innerHTML = '<i class="fas fa-mars"></i>';
+        }
+        //     var parent = elements[i].parentNode;
+        //     if (parent.classList.contains("post-gender"))
+        //         parent.style.backgroundColor="#4678C5";
+        // }
     </script>
 </body>
 

@@ -18,7 +18,7 @@
            <a href="/"><img class="logo" src="public/materials/logo_dark.svg" alt="Guard logo"></a>
             <p class="login-container">
                 <a id="login" href="/login">Zaloguj się</a>
-                <a id="signup" href="signin.php">Rejestracja</a>
+                <a id="signup" href="/signUp">Rejestracja</a>
             </p>
         </nav>
     </div>
@@ -62,7 +62,7 @@
                 </label>
                 <button id="log-in" type="submit">Zaloguj się</button>
             </form>
-            <div id="no-account">Nie posiadasz konta? <a href="signin.php"><b>Zarejestruj się</b></a></div>
+            <div id="no-account">Nie posiadasz konta? <a href="/signUp"><b>Zarejestruj się</b></a></div>
         </div>
     </div>
 </body>

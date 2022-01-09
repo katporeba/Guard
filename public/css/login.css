@@ -123,6 +123,10 @@ nav a:hover,a:active {
     color: #000000;
 }
 
+#shelter #main-text {
+    width: 90%;
+}
+
 .text-input {
     margin-top: 1em;
     font-weight: 600;
@@ -135,6 +139,10 @@ form {
     width: 60%;
     display: flex;
     flex-direction: column;
+}
+
+#shelter form {
+    height: 200vh;
 }
 
 .input-with-border {
