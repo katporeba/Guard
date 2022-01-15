@@ -1,0 +1,31 @@
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.login-container {
+    padding-right: 1em;
+}
+
+.login-container i {
+    padding: 0 2em;
+}
+
+.login-container.light i {
+    color: #E0E0E0;
+}
+
+.login-container.dark i {
+    color: #656565;
+}
+
+/*.login-container .fa-search, .login-container .fa-sign-out-alt{*/
+/*    color: #929292;*/
+/*}*/

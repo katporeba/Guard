@@ -22,7 +22,6 @@ body {
     margin: auto;
     width: 100vw;
     z-index: 999;
-
 }
 
 nav {
@@ -33,7 +32,6 @@ nav {
     align-content: center;
     margin-top: 1em;
 }
-
 
 #background-pic {
     opacity: 0.9;
@@ -74,8 +72,17 @@ nav img{
     padding-left: 4em;
 }
 
-.login-container{
+.login-container {
     padding-right: 4em;
+}
+
+.login-container i {
+    padding: 0 2em;
+    color: #D0D0D0;
+}
+
+.login-container .fa-search{
+    color: #929292;
 }
 
 #signup {

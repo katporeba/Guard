@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="public/materials/favicon3.png"/>
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/nav.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="https://code.iconify.design/2/2.0.4/iconify.min.js"></script>
     <script src="https://kit.fontawesome.com/5ab342c5ec.js" crossorigin="anonymous"></script>
     <script>
         window.scrollBy({ 
@@ -22,19 +23,28 @@
 
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <title>Dashboard</title>
+    <title>Strona głównas</title>
 </head>
 
 <body>
-    <!-- <img id="background-pic" src="../materials/2.png"> -->
-    <!-- <img id="background-pic2" src="../materials/2.png"> -->
     <img id="background-pic3" src="public/materials/dog-white.png">
     <div class="parent">
         <nav> 
-            <a href="javascript:window.location.href=window.location.href"><img class="logo-light" src="public/materials/logo2.svg" alt="Guard logo"></a>
-            <p class="login-container">
-                <a id="login" href="/login">Zaloguj się</a>
-                <a id="signup" href="/signUp">Rejestracja</a>
+            <a href="/"><img class="logo-light" src="public/materials/logo2.svg" alt="Guard logo"></a>
+            <p class="login-container light">
+                <?php if (!empty($_SESSION['user'])) { ?>
+                    <a href="/search"><i class="fas fa-search"></i></a>
+                    <a href="/favourites"><i class="fas fa-heart"></i></a>
+                    <!--                    <i class="far fa-comment"></i>-->
+                    <a href="/search"><i class="fas fa-user"></i></a>
+                    <?php if ($_SESSION['shelter'] != "personal") { ?>
+                        <a href="/addProject"><i class="fas fa-plus"></i></a>
+                        <?php } ?>
+                    <a href="/logout"><i class="fas fa-sign-out-alt"></i></a>
+                <?php } else { ?>
+                    <a id="login" href="/login">Zaloguj się</a>
+                    <a id="signup" href="/signUp">Rejestracja</a>
+                 <?php } ?>
             </p>
         </nav>
     </div>
@@ -45,7 +55,7 @@
             <img src="public/materials/wave/3.png" alt="" unselectable="on">
         </div>
         <div class="left-side">
-            <div class="search-bar" onclick="location.href='/chooseAnimal'">
+            <div class="search-bar" onclick="location.href='/search'">
                 <span class="iconify" data-icon="akar-icons:search" style="color: black;" data-height="23"></span>
                 <span class="text-animation">Znajdź ogłoszenie  </span>
             </div>

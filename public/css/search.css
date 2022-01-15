@@ -1,4 +1,4 @@
-html { 
+html {
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
 }
@@ -8,13 +8,25 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+form {
+    z-index: 200;
+}
+#scroll-form #choose-type-form {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+#scroll-form #choose-type-form::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
 .parent {
     position: fixed;
     top: 0;
     left: 0;
     margin: auto;
     width: 100%;
-    height: 12em;
+
+    z-index: 100;
 }
 
 #main-container .parent {
@@ -28,10 +40,10 @@ nav {
     justify-content: space-between;
     align-items: center;
     align-content: center;
-    
+
     position: -webkit-sticky;
     position: sticky;
-    top: 0; 
+    top: 0;
 }
 
 #not-sticky nav {
@@ -189,7 +201,7 @@ nav a:hover,a:active {
 }
 
 #scroll-form #checkboxes input[type=checkbox]:checked + .whatever, #scroll-form #checkboxes input[type=radio]:checked + .whatever {
- filter: none;
+    filter: none;
 }
 
 /* form styling */
@@ -207,19 +219,25 @@ nav a:hover,a:active {
 }
 
 #scroll-form {
-    display: flex;
     width: 100%;
     justify-content: center;
 }
 
 #scroll-form #choose-type-form {
-    display: inline-flex;
+    display: flex;
     height: 6em;
     width: 90%;
     overflow: scroll;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: flex-end;
+    flex-direction: row;
+    margin: auto;
+    padding: 1em 0;
+}
+
+#scroll-form #choose-type-form * {
+    cursor: pointer;
 }
 
 #scroll-form #choose-type-form > div {
@@ -240,9 +258,9 @@ nav a:hover,a:active {
 
 .input-text {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 24px;
-    color: #676767;
+    color: #939393;
 }
 
 select {
@@ -260,7 +278,7 @@ select {
     font-size: 12px;
     color: #484848;
     outline: none;
-
+    cursor: pointer;
 }
 
 select::-ms-expand {
@@ -384,7 +402,7 @@ select::-ms-expand {
     border-radius: 35px;
 }
 
- #color .whatever {
+#color .whatever {
     width: 1.5em;
     height: 1.5em;
     background-color: #ffffff;
@@ -450,24 +468,24 @@ select::-ms-expand {
     -webkit-appearance: none;
     width: 40%;
     height: 0.2em;
-    border-radius: 5px;  
+    border-radius: 5px;
     background: #d3d3d3;
     outline: none;
     opacity: 1;
     -webkit-transition: .2s;
     transition: opacity .2s;
 }
-  
+
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 1em;
     height: 1em;
-    border-radius: 50%; 
+    border-radius: 50%;
     background: #484848;
     cursor: pointer;
 }
-  
+
 .slider::-moz-range-thumb {
     width: 1em;
     height: 1em;
@@ -496,6 +514,21 @@ select::-ms-expand {
 #size #checkboxes .whatever {
     height: 3em;
     width: 30%;
+}
+
+#file {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    background: #ffffff;
+    border-radius: 35px;
+    padding: 6px 12px;
 }
 
 a {
@@ -565,6 +598,7 @@ a {
 }
 
 #posts .post {
+    cursor: pointer;
     margin: 2em 0;
     width: 20%;
     min-width: 17em;
@@ -573,6 +607,10 @@ a {
     overflow: hidden;
     filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.2));
     background: linear-gradient(178.42deg, rgba(245, 242, 241, 0.5) 1.26%, rgba(255, 255, 255, 0.5) 98.61%);
+}
+
+#posts .post:hover {
+    filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.3));
 }
 
 #posts:not(.fav) > div:first-child {
@@ -587,20 +625,20 @@ a {
     border-radius: 0.2em;
 }
 
-#first-post {
+.first-post {
     display: flex;
     flex-direction: row;
 }
 
-#first-post #first-column {
+.first-post #first-column {
     width: 50%;
 }
 
-#first-post #second-column {
+.first-post #second-column {
     width: 50%;
 }
 
-#first-post #second-column > * {
+.first-post #second-column > * {
     margin: 0 2em;
 }
 .post-informations {
@@ -729,6 +767,7 @@ a {
     font-weight: 500;
     font-size: 16px;
     color: #000000;
+    padding-top: 1em;
 }
 
 #post-description {
@@ -756,6 +795,8 @@ a {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    width: 50%;
+
 }
 
 #map-text #shelter-name {
@@ -763,7 +804,9 @@ a {
     font-weight: 500;
     font-size: 10px;
     color: #484848;
+    white-space: nowrap;
     overflow: hidden;
+    text-overflow: clip;
 }
 
 #map-text #shelter-address {
@@ -783,13 +826,17 @@ a {
     align-items: center;
     filter: drop-shadow(0px 4px 10px rgba(171, 148, 129, 0.28));
     background: linear-gradient(90deg, #303030 0%, #000000 100%);
-    border-radius: 25px;    
+    border-radius: 25px;
     height: 2em;
     width: 4em;
 }
 
 #icon-container i {
     color: #ffffff;
+}
+
+#icon-container:hover {
+    filter: drop-shadow(0px 4px 10px rgba(42, 42, 42, 0.28));
 }
 
 #post-graph {
@@ -912,6 +959,8 @@ a {
     font-size: 24px;
     filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.18));
     color: #484848;
+    margin-right: 3em;
+    cursor: pointer;
 }
 
 .round-icon {
@@ -922,7 +971,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 #contact {
@@ -988,14 +1037,18 @@ a {
     width: 17em;
     z-index: -100 !important;
     margin-top: 3em;
+    cursor: pointer;
 }
 
 #main-text-fav {
     display: flex;
     flex-direction: column;
-    margin-top: 3em;
-    margin-left: 2em;
+    margin-top: 7em;
+
+    /*margin-top: 3em;*/
+    /*margin-left: 2em;*/
     width: 100%;
+
 }
 
 #main-text-title {
@@ -1003,6 +1056,7 @@ a {
     font-weight: 500;
     font-size: 48px;
     color: #000000;
+    padding-left: 100px;
 }
 
 #main-text-desc {
@@ -1011,6 +1065,8 @@ a {
     font-weight: 300;
     font-size: 18px;
     color: #484848;
+    padding-left: 100px;
+
 }
 
 #posts .fa-heart {
@@ -1051,7 +1107,6 @@ a {
 }
 
 #first-one #button-container {
-    padding-top: 3em;
     display: flex;
     justify-content: center;
 }
@@ -1095,7 +1150,7 @@ a {
         z-index: 100;
     }
     100% {background-color: white;}
-} 
+}
 
 
 @keyframes float {

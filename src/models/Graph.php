@@ -5,15 +5,13 @@ class Graph {
     private $acceptsChildren;
     private $acceptsAnimals;
     private $energyLevel;
-    private $openess;
 
-    public function __construct($requiresAttention, $acceptsChildren, $acceptsAnimals, $energyLevel, $openess)
+    public function __construct($requiresAttention, $acceptsChildren, $acceptsAnimals, $energyLevel)
     {
         $this->requiresAttention = $requiresAttention;
         $this->acceptsChildren = $acceptsChildren;
         $this->acceptsAnimals = $acceptsAnimals;
         $this->energyLevel = $energyLevel;
-        $this->openess = $openess;
     }
 
     public function getRequiresAttention()
@@ -35,13 +33,5 @@ class Graph {
     {
         return $this->energyLevel;
     }
-
-    public function getOpeness()
-    {
-        return $this->openess;
-    }
-
-
-
 
 }

@@ -4,11 +4,13 @@ class Project {
     private $title;
     private $description;
     private $image;
+    private $id;
 
-    public function __construct($title, $description, $image) {
+    public function __construct($title, $description, $image, $id=null) {
         $this->title = $title;
         $this->description = $description;
         $this->image = $image;
+        $this->id = $id;
     }
 
     public function getTitle()
@@ -16,30 +18,29 @@ class Project {
         return $this->title;
     }
 
-    public function setTitle($title): void
-    {
-        $this->title = $title;
-    }
-
     public function getDescription()
     {
         return $this->description;
     }
 
-    public function setDescription($description): void
-    {
-        $this->description = $description;
-    }
 
     public function getImage()
     {
         return $this->image;
     }
 
-    public function setImage($image): void
+    public function getId()
     {
-        $this->image = $image;
+        return $this->id;
     }
+
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+
+
 
 
 

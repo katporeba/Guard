@@ -17,8 +17,9 @@ class Routing {
     }
 
     public static function run ($url) {
-        // wyciągamy pierwszy moduł url i sprawdzenie czy url istnieje
-        $action = explode("/", $url)[0];
+        $urlParts = explode("/", $url);
+        $action = $urlParts[0];
+
         if (!array_key_exists($action, self::$routes)) {
             die("Wrong url!");
         }
@@ -27,6 +28,8 @@ class Routing {
         $object = new $controller;
         $action = $action ?: 'index';
 
-        $object->$action();
+        $id = $urlParts[1] ?? '';
+        // TODO walidacja czy id faktycznie jest liczbą
+        $object->$action($id);
     }
 }

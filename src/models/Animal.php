@@ -8,8 +8,9 @@ class Animal {
     private $health;
     private $color;
     private $weight;
+    private $animalType;
 
-    public function __construct($name, $age, $gender, $size, $health, $color, $weight) {
+    public function __construct($name, $age, $gender, $size, $health, $color, $weight, $animalType) {
         $this->name = $name;
         $this->age = $age;
         $this->gender = $gender;
@@ -17,6 +18,7 @@ class Animal {
         $this->health = $health;
         $this->color = $color;
         $this->weight = $weight;
+        $this->animalType = $animalType;
     }
 
     public function getName()
@@ -88,4 +90,11 @@ class Animal {
     {
         $this->weight = $weight;
     }
+
+    public function getAnimalType()
+    {
+        return $this->animalType;
+    }
+
+
 }

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once 'AppController.php';
 require_once __DIR__ .'/../models/User.php';
@@ -18,25 +19,28 @@ class SecurityController extends AppController {
         $userRepository = new UserRepository();
 
         if (!$this->isPost()) {
+            $this->unsetSession();
             return $this->render('login');
         }
 
         $email = $_POST['email'];
         $password = md5($_POST['password']);
-
         $user = $userRepository->getUser($email);
 
-        if (!$user) {
+        if (!$user)
             return $this->render('login', ['messages' => ['User not found!']]);
-        }
 
-        if ($user->getEmail() !== $email) {
+        if ($user->getEmail() !== $email)
             return $this->render('login', ['messages' => ['User with this email not exist!']]);
-        }
 
-        if ($user->getPassword() !== $password) {
+        if ($user->getPassword() !== $password)
             return $this->render('login', ['messages' => ['Wrong password!']]);
-        }
+
+        setcookie("user_email", $user->getEmail(), time()+ 360, "/");
+        $_SESSION['user'] = htmlspecialchars($user->getEmail());
+        $userId = $this->userRepository->getUserDetailsId($user);
+        $_SESSION['userId'] = htmlspecialchars($userId);
+        $_SESSION['shelter'] = htmlspecialchars($this->userRepository->checkIfUserIsAShelter($userId));
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/");
@@ -44,6 +48,7 @@ class SecurityController extends AppController {
 
     public function signUpShelter() {
         if (!$this->isPost()) {
+            $this->unsetSession();
             return $this->render('signin-shelter');
         }
 
@@ -58,12 +63,13 @@ class SecurityController extends AppController {
 //        $openFromHour = $_POST['shelter-name'];
 //        $openToHour = $_POST['shelter-name'];
 
-        $shelter = new Shelter($phoneNumber, $city, $street, $streetNumber, $postalCode, $website);
+        $shelter = new Shelter($phoneNumber, $city, $street, $streetNumber, $postalCode, $website, null);
         $this->signUp($shelter, 'signin-shelter');
     }
 
     public function signUpPersonal() {
         if (!$this->isPost()) {
+            $this->unsetSession();
             return $this->render('signin-personal');
         }
         $this->signUp(null, 'signin-personal');
@@ -85,9 +91,26 @@ class SecurityController extends AppController {
 
         //TODO try to use better hash function
         $user = new User($email, md5($password), $name);
-        $user->setShelter($shelter);
-        $this->userRepository->addUser($user);
+        $this->userRepository->addUser($user, $shelter);
 
         return $this->render('login', ['messages' => ['Zarejestrowano do serwisu!']]);
+    }
+
+    public function logout(){
+        $this->unsetSession();
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/");
+    }
+
+    public function unsetSession(){
+        if (!empty($_SESSION['user']))
+            unset($_SESSION['user']);
+
+        if (!empty($_SESSION['userId']))
+            unset($_SESSION['userId']);
+
+        if (!empty($_SESSION['shelter']))
+            unset($_SESSION['shelter']);
+        session_destroy();
     }
 }

@@ -5,7 +5,6 @@ class User {
     private $email;
     private $password;
     private $username;
-    private $shelter;
 
     public function __construct(
         string $email,
@@ -15,7 +14,6 @@ class User {
         $this->email = $email;
         $this->password = $password;
         $this->username = $username;
-        $this->shelter = null;
     }
 
     public function getEmail(): string {
@@ -29,18 +27,4 @@ class User {
     public function getUsername(): string {
         return $this->username;
     }
-
-    public function getShelter()
-    {
-        return $this->shelter;
-    }
-
-    public function setShelter($shelter): void
-    {
-        $this->shelter = $shelter;
-    }
-
-
-
-
 }

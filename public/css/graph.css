@@ -1,0 +1,31 @@
+#graph {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    grid-gap: 2em;
+    flex-wrap: wrap;
+}
+
+.graph-container {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 0.4em;
+    width: 45%;
+}
+
+.graph-container .slider {
+    width: auto;
+}
+
+.slider-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background-color: #ffffff;
+    padding: 0.5em 0;
+    border-radius: 35px;
+    font-size: 14px;
+    grid-gap: 1em;
+}

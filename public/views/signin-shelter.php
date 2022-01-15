@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="public/css/login.css">
+    <link rel="icon" type="image/png" href="public/materials/favicon3.png"/>
+    <script type="text/javascript" src="./public/js/script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://kit.fontawesome.com/5ab342c5ec.js" crossorigin="anonymous"></script>

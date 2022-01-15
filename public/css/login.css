@@ -346,3 +346,8 @@ form {
 #scroll-up:hover {
     filter: drop-shadow(0px 10px 20px rgba(145, 145, 145, 0.7));
 }
+
+.no-valid {
+    color: #982f2f;
+    border-color: #982f2f;
+}

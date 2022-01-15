@@ -11,9 +11,10 @@ class Shelter {
     private $openToDay;
     private $openFromHour;
     private $openToHour;
+    private $id_User;
 
 
-    public function __construct($phoneNumber, $city, $street, $streetNumber, $postalCode, $website) {
+    public function __construct($phoneNumber, $city, $street, $streetNumber, $postalCode, $website, $id_User) {
         $this->phoneNumber = $phoneNumber;
         $this->city = $city;
         $this->street = $street;
@@ -32,6 +33,12 @@ class Shelter {
         $this->openToDay = 'friday';
         $this->openFromHour = $timestring;
         $this->openToHour = $timestring;
+        $this->id_User = $id_User;
+    }
+
+    public function getIdUser()
+    {
+        return $this->id_User;
     }
 
     public function getPhoneNumber()
@@ -84,6 +91,13 @@ class Shelter {
     {
         return $this->openToHour;
     }
+
+    public function setIdUser($id_User): void
+    {
+        $this->id_User = $id_User;
+    }
+
+
 
 
 
