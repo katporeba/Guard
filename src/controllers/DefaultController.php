@@ -14,7 +14,4 @@ class DefaultController extends AppController {
         $this->render('signin');
     }
 
-    public function favourites() {
-        $this->render('favourites');
-    }
 }

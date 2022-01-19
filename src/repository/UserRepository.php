@@ -45,8 +45,8 @@ class UserRepository extends Repository {
             $shelter->setIdUser($id);
             $db = $this->database->connect();
             $stmt = $db->prepare('
-            INSERT INTO public."Shelter" ("phone_number", city, street, "street_number","postal_code",website,"open_from_day","open_to_day","open_from_hour","open_to_hour", "id_User")
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO public."Shelter" ("phone_number", city, street, "street_number","postal_code",website, "id_User")
+            VALUES (?, ?, ?, ?, ?, ?, ?)
             ');
 
             $stmt->execute([
@@ -56,10 +56,6 @@ class UserRepository extends Repository {
                 $shelter->getStreetNumber(),
                 $shelter->getPostalCode(),
                 $shelter->getWebsite(),
-                $shelter->getOpenFromDay(),
-                $shelter->getOpenToDay(),
-                $shelter->getOpenFromHour(),
-                $shelter->getOpenToHour(),
                 $id
             ]);
         }

@@ -7,10 +7,6 @@ class Shelter {
     private $streetNumber;
     private $postalCode;
     private $website;
-    private $openFromDay;
-    private $openToDay;
-    private $openFromHour;
-    private $openToHour;
     private $id_User;
 
 
@@ -21,18 +17,6 @@ class Shelter {
         $this->streetNumber = $streetNumber;
         $this->postalCode = $postalCode;
         $this->website = $website;
-//        $this->openFromDay = $openFromDay;
-//        $this->openToDay = $openToDay;
-//        $this->openFromHour = $openFromHour;
-//        $this->openToHour = $openToHour;
-
-        $now = new DateTime();
-        $timestring = $now->format('h:i:s');
-
-        $this->openFromDay = 'monday';
-        $this->openToDay = 'friday';
-        $this->openFromHour = $timestring;
-        $this->openToHour = $timestring;
         $this->id_User = $id_User;
     }
 
@@ -69,27 +53,6 @@ class Shelter {
     public function getWebsite()
     {
         return $this->website;
-    }
-
-    public function getOpenFromDay()
-    {
-        return $this->openFromDay;
-    }
-
-    public function getOpenToDay()
-    {
-        return $this->openToDay;
-    }
-
-    public function getOpenFromHour()
-    {
-        return $this->openFromHour;
-    }
-
-
-    public function getOpenToHour()
-    {
-        return $this->openToHour;
     }
 
     public function setIdUser($id_User): void

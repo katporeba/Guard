@@ -24,7 +24,7 @@ class SecurityController extends AppController {
         }
 
         $email = $_POST['email'];
-        $password = md5($_POST['password']);
+        $password = $_POST['password'];
         $user = $userRepository->getUser($email);
 
         if (!$user)
@@ -33,7 +33,7 @@ class SecurityController extends AppController {
         if ($user->getEmail() !== $email)
             return $this->render('login', ['messages' => ['User with this email not exist!']]);
 
-        if ($user->getPassword() !== $password)
+        if(!password_verify($password, $user->getPassword()))
             return $this->render('login', ['messages' => ['Wrong password!']]);
 
         setcookie("user_email", $user->getEmail(), time()+ 360, "/");
@@ -58,10 +58,6 @@ class SecurityController extends AppController {
         $streetNumber = $_POST['street-number'];
         $postalCode = $_POST['postal-code'];
         $website = $_POST['website'];
-//        $openFromDay = $_POST['shelter-name'];
-//        $openToDay = $_POST['shelter-name'];
-//        $openFromHour = $_POST['shelter-name'];
-//        $openToHour = $_POST['shelter-name'];
 
         $shelter = new Shelter($phoneNumber, $city, $street, $streetNumber, $postalCode, $website, null);
         $this->signUp($shelter, 'signin-shelter');
@@ -89,8 +85,8 @@ class SecurityController extends AppController {
             return $this->render($template, ['messages' => ['Nie zaakceptowano warunków']]);
         }
 
-        //TODO try to use better hash function
-        $user = new User($email, md5($password), $name);
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $user = new User($email, $hashed_password, $name);
         $this->userRepository->addUser($user, $shelter);
 
         return $this->render('login', ['messages' => ['Zarejestrowano do serwisu!']]);

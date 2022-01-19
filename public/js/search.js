@@ -1,5 +1,11 @@
 const search = document.querySelector('#scroll-down');
 const projectContainer = document.querySelector("#posts");
+const selectFilter = document.getElementById("filter-list");
+
+selectFilter.onchange = function(e){
+    eventHandler(e);
+};
+
 let text = {};
 let iter = 0;
 
@@ -33,41 +39,31 @@ function eventHandler (event) {
 
 function getFormInput() {
     getCheckedRadio("rGroup");
-    getCheckedCheckboxes("genderCheck");
-    returnGender(text);
-    getInputValue("local", "", "%");
-    getCheckedCheckboxes("Color");
-    getInputValue("age", '20', '20');
-    getHealth("healthy");
-    getCheckedCheckboxes("chooseSize");
     getValueFromSelect("filter");
+    getHealth("healthy");
+    getAllCheckedCheckboxes("genderCheck","gender");
+    getAllCheckedCheckboxes("chooseSize","size");
+    getAllCheckedCheckboxes("color","color");
+    getInputValue("local", "", "%");
+    getInputValue("age", '20', '20');
 }
 
-function getCheckedCheckboxes(name) {
-    checkboxes = document.getElementsByName(name);
-    selectedCboxes = Array.prototype.slice.call(checkboxes).filter( ch => ch.checked === true);
-    iter = 0;
-    // if (selectedCboxes.length == 0)
-    //     text = Object.assign({}, text, {[name] : "%"});
-    // else
-    selectedCboxes.forEach(getValueFromCheckbox);
-}
-
-function getValueFromCheckbox(item) {
-    tmpObject = {[item.name+"_"+iter++] : item.value};
-    text = Object.assign({}, text, tmpObject);
-}
-
-function returnGender(arrayAll) {
-    if(arrayAll['genderCheck_0']!==undefined && arrayAll['genderCheck_1']!==undefined)
-        tmpObject = {'gender' : '%'};
-    else if (arrayAll['genderCheck_0']!==undefined)
-        tmpObject = {'gender' : arrayAll['genderCheck_0']};
-    else if (arrayAll['genderCheck_1']!==undefined)
-        tmpObject = {'gender' : arrayAll['genderCheck_1']};
-    else
-        tmpObject = {'gender' : '%'};
-    text = Object.assign({}, text, tmpObject);
+function getAllCheckedCheckboxes(className, name) {
+    var checkedBoxes = document.querySelectorAll('input[name='+className+']:checked');
+    if(checkedBoxes.length===0) {
+        tmpObject = {[name] : ""};
+        text = Object.assign({}, text, tmpObject);
+    }
+    else {
+        var string = " AND (";
+        for(i=0;i<checkedBoxes.length;i++) {
+            string += name + " LIKE '" +checkedBoxes[i].value+"' OR ";
+        }
+        str = string.substring(0, string.lastIndexOf(" OR"));
+        str += ")";
+        tmpObject = {[name] : str};
+        text = Object.assign({}, text, tmpObject);
+    }
 }
 
 function getCheckedRadio(name) {

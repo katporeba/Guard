@@ -33,7 +33,7 @@
                         <a href="/search"><i class="fas fa-search"></i></a>
                         <a href="/favourites"><i class="fas fa-heart"></i></a>
                         <!--                    <i class="far fa-comment"></i>-->
-                        <a href="/search"><i class="fas fa-user"></i></a>
+<!--                        <a href="/search"><i class="fas fa-user"></i></a>-->
                         <?php if ($_SESSION['shelter'] != "personal") { ?>
                             <a href="/addProject"><i class="fas fa-plus"></i></a>
                         <?php } ?>
@@ -95,44 +95,47 @@
                             </label>
                         </div>
                     </div>
-
-                    <div id="Lokalizacja">
-                        <div class="local-container">
-                            <input name="local" type="text" placeholder="Podaj lokalizację">
-                            <div class="select">
-                                <select name="distance" id="distance-list">
-                                    <option value="">+0 km</option>
-                                    <option value="5">+5 km</option>
-                                    <option value="15">+15 km</option>
-                                    <option value="50">+ 50 km</option>
-                                </select>
-                            </div>
-                        </div>
+                    <div class="local-container scroll">
+                        <input class="full-width" name="local" type="text" placeholder="Podaj lokalizację">
                     </div>
+<!--                    <div id="Lokalizacja">-->
+<!--                        <div class="local-container">-->
+<!--                            <input name="local" type="text" placeholder="Podaj lokalizację">-->
+<!--                            <div class="select">-->
+<!--                                <select name="distance" id="distance-list">-->
+<!--                                    <option value="">+0 km</option>-->
+<!--                                    <option value="5">+5 km</option>-->
+<!--                                    <option value="15">+15 km</option>-->
+<!--                                    <option value="50">+ 50 km</option>-->
+<!--                                </select>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                     <div id="color">
                         <div id="checkboxes">
-                            <input type="checkbox" name="Color" value="black" id="black"/>
+                            <input type="checkbox" name="color" value="black" id="black"/>
                             <label class="whatever" class="no-backgroud" for="black">
                                 <span class="text-type"></span>
                             </label>
-                            <input type="checkbox" name="Color" value="gray" id="gray"/>
+                            <input type="checkbox" name="color" value="gray" id="gray"/>
                             <label class="whatever" class="no-backgroud" for="gray">
                                 <span class="text-type"></span>
                             </label>
-                            <input type="checkbox" name="Color" value="brown" id="brown"/>
+                            <input type="checkbox" name="color" value="brown" id="brown"/>
                             <label class="whatever" class="no-backgroud" for="brown">
                                 <span class="text-type"></span>
                             </label>
-                            <input type="checkbox" name="Color" value="orange" id="orange"/>
+                            <input type="checkbox" name="color" value="orange" id="orange"/>
                             <label class="whatever" class="no-backgroud" for="orange">
                                 <span class="text-type"></span>
                             </label>
-                            <input type="checkbox" name="Color" value="white" id="white"/>
+                            <input type="checkbox" name="color" value="white" id="white"/>
                             <label class="whatever" class="no-backgroud" for="white">
                                 <span class="text-type"></span>
                             </label>
-                            <input type="checkbox" name="Color" value="all" id="all"/>
+                            <input type="checkbox" name="color" value="all" id="all"/>
+                            <input type="checkbox" name="color" value="all" id="all"/>
                             <label class="whatever" class="no-backgroud" for="all">
                                 <span class="text-type"></span>
                             </label>
@@ -158,15 +161,15 @@
 
                     <div id="size">
                         <div id="checkboxes">
-                            <input type="checkbox" name="chooseSize" value="small" id="small"/>
+                            <input type="checkbox" name="chooseSize" value="Mały/a" id="small"/>
                             <label class="whatever" for="small">
                                 <span class="text-type">Mały</span>
                             </label>
-                            <input type="checkbox" name="chooseSize" value="medium" id="medium"/>
+                            <input type="checkbox" name="chooseSize" value="Średni/a" id="medium"/>
                             <label class="whatever" for="medium">
                                 <span class="text-type">Średni</span>
                             </label>
-                            <input type="checkbox" name="chooseSize" value="big" id="big"/>
+                            <input type="checkbox" name="chooseSize" value="Duży/a" id="big"/>
                             <label class="whatever" for="big">
                                 <span class="text-type">Duży</span>
                             </label>

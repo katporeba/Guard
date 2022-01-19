@@ -47,8 +47,8 @@ class ProjectRepository extends Repository {
         ');
 
         $stmt1 = $db->prepare('
-            INSERT INTO public."Animal" (name, age, gender, size, health, color, weight, "id_Shelter", "id_Graph", "id_Animal_type")
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)
+            INSERT INTO public."Animal" (name, age, gender, size, health, color, weight, "id_Graph", "id_Animal_type")
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         ');
 
 
@@ -74,7 +74,6 @@ class ProjectRepository extends Repository {
             $animal->getHealth(),
             $animal->getColor(),
             $animal->getWeight(),
-            $_SESSION["shelter"],
             $idGraph,
             $idAnimalType
         ]);
@@ -118,13 +117,12 @@ class ProjectRepository extends Repository {
     public function getProjectsWithFilter($filterArray) {
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public."Project" NATURAL JOIN public."Shelter" NATURAL JOIN public."Animal" NATURAL JOIN public."Animal_type"
-             NATURAL JOIN public."Graph" WHERE city LIKE :local AND health LIKE :health AND age <= :age AND type_name LIKE :type AND gender LIKE :gender ORDER BY "created_at" '.$filterArray['filter']);
+             NATURAL JOIN public."Graph" WHERE city LIKE :local AND health LIKE :health AND age <= :age AND type_name LIKE :type '.$filterArray['color'].$filterArray['size'].$filterArray['gender'].' ORDER BY "created_at" '.$filterArray['filter']);
 
         $stmt->bindParam(':local', $filterArray['local'], PDO::PARAM_STR);
         $stmt->bindParam(':health', $filterArray['healthy'], PDO::PARAM_STR);
         $stmt->bindParam(':age', $filterArray['age'], PDO::PARAM_STR);
         $stmt->bindParam(':type', $filterArray['rGroup'], PDO::PARAM_STR);
-        $stmt->bindParam(':gender', $filterArray['gender'], PDO::PARAM_STR);
 
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

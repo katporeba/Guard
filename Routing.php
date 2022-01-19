@@ -5,7 +5,6 @@ require_once 'src/controllers/SecurityController.php';
 require_once 'src/controllers/ProjectController.php';
 
 class Routing {
-    // tablica przechowująca url oraz adekwatne do niego sciezki kontrolera
     public static $routes;
 
     public static function get($url, $view) {
