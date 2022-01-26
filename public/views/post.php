@@ -19,27 +19,13 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <title>Ogłoszenie</title>
+    <title><?=$projects[0]['project']->getTitle()?></title>
 </head>
 
 <body id="search">
-    <nav>
+    <nav class="dark">
         <a href="/"><img class="logo" src="/public/materials/logo_dark.svg" alt="Guard logo"></a>
-        <p class="login-container dark">
-            <?php if (!empty($_SESSION['user'])) { ?>
-                <a href="/search"><i class="fas fa-search"></i></a>
-                <a href="/favourites"><i class="fas fa-heart"></i></a>
-                <!--                    <i class="far fa-comment"></i>-->
-<!--                <a href="/search"><i class="fas fa-user"></i></a>-->
-                <?php if ($_SESSION['shelter'] != "personal") { ?>
-                    <a href="/addProject"><i class="fas fa-plus"></i></a>
-                <?php } ?>
-                <a href="/logout"><i class="fas fa-sign-out-alt"></i></a>
-            <?php } else { ?>
-                <a id="login" href="/login">Zaloguj się</a>
-                <a id="signup" href="/signUp">Rejestracja</a>
-            <?php } ?>
-        </p>
+        <?php include('nav.php');?>
     </nav>
     <div id="two-rows">
         <div id="post-first-column">

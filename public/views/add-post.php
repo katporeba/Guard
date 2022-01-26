@@ -14,30 +14,15 @@
     <title>Dodaj ogłoszenie</title>
 </head>
 
-<body>
-    <div class="parent" id="not-sticky">
-        <nav>
-            <a href="/"><img class="logo" src="public/materials/logo_dark.svg" alt="Guard logo"></a>
-            <p class="login-container dark">
-                <?php if (!empty($_SESSION['user'])) { ?>
-                    <a href="/search"><i class="fas fa-search"></i></a>
-                    <a href="/favourites"><i class="fas fa-heart"></i></a>
-                    <!--                    <i class="far fa-comment"></i>-->
-<!--                    <a href="/search"><i class="fas fa-user"></i></a>-->
-                    <?php if ($_SESSION['shelter'] != "personal") { ?>
-                        <a href="/addProject"><i class="fas fa-plus"></i></a>
-                    <?php } ?>
-                    <a href="/logout"><i class="fas fa-sign-out-alt"></i></a>
-                <?php } else { ?>
-                    <a id="login" href="/login">Zaloguj się</a>
-                    <a id="signup" href="/signUp">Rejestracja</a>
-                <?php } ?>
-            </p>
-        </nav>
-    </div>
+<body id="choose">
     <form method="post" action="addProject" enctype="multipart/form-data">
-
         <div class="container" id="add-post">
+            <div class="parent">
+                <nav class="dark">
+                    <a href="/"><img class="logo" src="public/materials/logo_dark.svg" alt="Guard logo"></a>
+                    <?php include('nav.php');?>
+                </nav>
+            </div>
             <div class="left-side">
                 <div id="main-text"><b>Dodaj ogłoszenie</b></div>
                 <div class="text-below">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse volutpat sagittis.</div>
@@ -204,7 +189,7 @@
                         <div id="post-desc" class="fav">
                             <label class="input-text" for="post-desc">Opis ogłoszenia</label>
                             <div class="desc-container">
-                                <textarea name="post-desc" rows="10" cols="30">Min. 30 znaków</textarea>
+                                <textarea name="post-desc" rows="10" cols="30" placeholder="Min. 30 znaków"></textarea>
                             </div>
                         </div>
 
@@ -212,8 +197,9 @@
                             <div class="input-text">Zdjęcie</div>
                             <label for="file-custom" class="custom-file-upload">
                                 <i class="fas fa-plus"></i>
+                                <span id="file-name"></span>
                             </label>
-                            <input name="file" type="file" id="file-custom">
+                            <input name="file" type="file" id="file-custom" onchange="myFunction(this.value)">
                         </div>
                         <button id="log-in" type="submit">Dodaj ogłoszenie</button>
                     </div>
@@ -226,6 +212,10 @@
     var sliderArray = document.getElementsByClassName("slider");
     for (i=0;i<sliderArray.length;i++){
         sliderArray[i].setAttribute("oninput", "this.nextElementSibling.innerHTML = this.value");
+    }
+
+    function myFunction(val) {
+        document.getElementById('file-name').innerHTML = val;
     }
 </script>
 </body>

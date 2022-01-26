@@ -5,27 +5,76 @@ nav {
     align-items: center;
     align-content: center;
 
-    position: -webkit-sticky;
-    position: sticky;
+    /*position: -webkit-sticky;*/
+    /*position: sticky;*/
     top: 0;
+    height: 6em;
+}
+
+nav img{
+    padding-left: 4em;
+}
+
+.parent#not-sticky{
+    background-color: white;
 }
 
 .login-container {
-    padding-right: 1em;
+    padding-right: 4em;
 }
 
 .login-container i {
     padding: 0 2em;
 }
 
-.login-container.light i {
-    color: #E0E0E0;
+.light *{
+    color: #E0E0E0 !important;
 }
 
-.login-container.dark i {
-    color: #656565;
+.dark *{
+    color: #8a8a8a !important;
+}
+.dark #signup {
+    border: 1px solid #8a8a8a;
 }
 
-/*.login-container .fa-search, .login-container .fa-sign-out-alt{*/
-/*    color: #929292;*/
-/*}*/
+#signup {
+    border: 1px solid rgba(255, 255, 255, 0.267);
+    box-sizing: border-box;
+    border-radius: 1em;
+    padding: 0.5em 1.2em;
+    margin-left: 2em;
+}
+
+#signup:hover {
+    border: 1px solid white;
+}
+
+a:link, a:visited {
+    color: rgb(216, 216, 216);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-style: normal;
+}
+
+a:hover, a:active {
+    color: white;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    nav {
+        justify-content: center !important;
+        align-items: end !important;
+    }
+
+    nav img {
+        padding: 0 !important;
+    }
+
+    .login-container {
+        display: none;
+    }
+}

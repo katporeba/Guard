@@ -13,10 +13,6 @@
     width: 45%;
 }
 
-.graph-container .slider {
-    width: auto;
-}
-
 .slider-container {
     display: flex;
     flex-direction: row;
