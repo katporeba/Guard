@@ -41,9 +41,6 @@
             }
             ?>
             <form method="post" action="signUpPersonal" enctype="multipart/form-data">
-                <div class="text-input">Nazwa użytkownika</div>
-                <input name="user-name" class="input-with-border" type="text" placeholder="Podaj swoją nazwę">
-
                 <div class="text-input">E-mail</div>
                 <input name="e-mail" class="input-with-border" type="text" placeholder="Podaj swój e-mail">
 

@@ -1,12 +1,13 @@
+body {
+    -webkit-tap-highlight-color: transparent;
+}
+
 nav {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     align-content: center;
-
-    /*position: -webkit-sticky;*/
-    /*position: sticky;*/
     top: 0;
     height: 6em;
 }
@@ -62,19 +63,145 @@ a:hover, a:active {
     color: white;
 }
 
+.mobile {
+    display: none !important;
+}
+
+#myLinks {
+    display: none;
+}
+
+#myLinks * {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+}
+
+#toggle {
+    display: none;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 
     nav {
         justify-content: center !important;
         align-items: end !important;
+        flex-direction: column;
+        height: auto;
     }
 
     nav img {
         padding: 0 !important;
+        align-self: center;
+    }
+
+    nav > a:first-child {
+        align-self: center;
+        order: 2;
+    }
+
+    .desktop {
+        display: none !important;
     }
 
     .login-container {
+        padding: 0;
+    }
+
+    .mobile {
+        display: block !important;
+        cursor: pointer;
+        padding: 0 !important;
+        margin-right: 2em;
+        z-index: 100;
+    }
+
+    #myLinks * {
+        display: block;
+    }
+
+    #myLinks a:not(#login, #signup) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-top: 2em;
+        width: 50%;
+        justify-content: space-between;
+    }
+
+    #signup {
+        margin-left: 0;
+        margin-top: 2em;
+    }
+
+    #myLinks {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        transform: translateY(-100%);
+        transition: transform 3s;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 99;
+        background: black;
+        color: white;
+        padding-top: 4rem;
+        margin: 0;
+        padding-left: 0;
+    }
+
+    .mobile-link {
+        text-align: right !important;
+        font-size: 14px;
+        padding: 0;
+    }
+
+
+/*    button */
+    .hamburger {
+        display: initial;
+        margin-right: 1em;
+        width: 2em;
+        height: 15px;
+        z-index: 100;
+    }
+
+    .hamburger div {
+        position: relative;
+        width: 1.5em;
+        height: 2px;
+        border-radius: 3px;
+        background-color: #a1a1a1;
+        margin-top: 5px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    #toggle {
         display: none;
     }
+
+    #toggle:checked + .hamburger .top-bun {
+        transform: rotate(-45deg);
+        margin-top: 25px;
+    }
+    #toggle:checked + .hamburger .bottom-bun {
+        opacity: 0;
+        transform: rotate(45deg);
+    }
+    #toggle:checked + .hamburger .meat {
+        transform: rotate(45deg);
+        margin-top: -2px;
+    }
+
+    #toggle:checked + .hamburger + .nav {
+        top: 0;
+        transform: scale(1);
+    }
+
 }

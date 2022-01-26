@@ -36,9 +36,11 @@ class SecurityController extends AppController {
         if(!password_verify($password, $user->getPassword()))
             return $this->render('login', ['messages' => ['Wrong password!']]);
 
-        setcookie("user_email", $user->getEmail(), time()+ 360, "/");
-        $_SESSION['user'] = htmlspecialchars($user->getEmail());
+//        setcookie("user_email", $user->getEmail(), time()+ 360, "/");
         $userId = $this->userRepository->getUserDetailsId($user);
+        $this->userRepository->log($userId,true);
+
+        $_SESSION['user'] = htmlspecialchars($user->getEmail());
         $_SESSION['userId'] = htmlspecialchars($userId);
         $_SESSION['shelter'] = htmlspecialchars($this->userRepository->checkIfUserIsAShelter($userId));
 
@@ -75,7 +77,6 @@ class SecurityController extends AppController {
         $email = $_POST['e-mail'];
         $password = $_POST['password'];
         $confirmedPassword = $_POST['confirmed-password'];
-        $name = $_POST['user-name'];
 
         if ($password !== $confirmedPassword) {
             return $this->render($template, ['messages' => ['Podaj prawidłowe hasło']]);
@@ -86,27 +87,28 @@ class SecurityController extends AppController {
         }
 
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $user = new User($email, $hashed_password, $name);
+        $user = new User($email, $hashed_password);
         $this->userRepository->addUser($user, $shelter);
 
         return $this->render('login', ['messages' => ['Zarejestrowano do serwisu!']]);
     }
 
     public function logout(){
+        $this->userRepository->log($_SESSION['userId'],(bool)false);
         $this->unsetSession();
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/");
     }
 
     public function unsetSession(){
-        if (!empty($_SESSION['user']))
-            unset($_SESSION['user']);
-
-        if (!empty($_SESSION['userId']))
-            unset($_SESSION['userId']);
-
-        if (!empty($_SESSION['shelter']))
-            unset($_SESSION['shelter']);
-        session_destroy();
+//        if (isset($_SESSION['user']))
+//            unset($_SESSION['user']);
+//
+//        if (isset($_SESSION['userId']))
+//            unset($_SESSION['userId']);
+//
+//        if (isset($_SESSION['shelter']))
+//            unset($_SESSION['shelter']);
+        session_unset();
     }
 }

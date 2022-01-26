@@ -23,21 +23,20 @@ class UserRepository extends Repository {
 
         return new User(
             $user['email'],
-            $user['password'],
-            $user['username']
+            $user['password']
         );
     }
 
     public function addUser(User $user, $shelter) {
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO public."User" (email, password, username)
-            VALUES (?, ?, ?)
+            INSERT INTO public."User" (email, password, "logged_in")
+            VALUES (?, ?)
         ');
 
         $stmt->execute([
             $user->getEmail(),
             $user->getPassword(),
-            $user->getUsername()
+            false
         ]);
 
         if($shelter != null) {
@@ -87,4 +86,14 @@ class UserRepository extends Repository {
         else
             return "personal";
     }
+
+    public function log(int $id, bool $boolValue) {
+        $stmt = $this->database->connect()->prepare('
+            UPDATE public."User" SET "logged_in" = :boolValue WHERE "id_User" = :id
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+        $stmt->bindParam(':boolValue', $boolValue, PDO::PARAM_BOOL);
+        $stmt->execute();
+    }
+
 }

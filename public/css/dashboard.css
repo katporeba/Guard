@@ -6,6 +6,7 @@ html {
 
 body { 
     margin: 0;
+    overflow: hidden;
     font-family: 'Poppins', sans-serif;
     background: #000000 no-repeat scroll right 0;
 

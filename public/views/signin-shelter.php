@@ -43,15 +43,15 @@
             <form method="post" action="signUpShelter" enctype="multipart/form-data">
                 <div class="left-side" id="first-one">
                     <div id="main-text"><b>Zarejestruj się</b> jako schronisko</div>
-                    <?php
-                    if(isset($messages)){
-                        foreach($messages as $message) {
-                            echo $message;
+                    <div class="messages">
+                        <?php
+                        if(isset($messages)){
+                            foreach($messages as $message) {
+                                echo $message;
+                            }
                         }
-                    }
-                    ?>
-                    <div class="text-input">Nazwa schroniska</div>
-                    <input name="user-name" class="input-with-border" type="text" placeholder="Podaj swoją nazwę">
+                        ?>
+                    </div>
                     <div class="text-input">Numer telefonu</div>
                     <input name="phone" class="input-with-border" type="tel" placeholder="Podaj swój numer">
                     <div class="text-input">E-mail</div>
