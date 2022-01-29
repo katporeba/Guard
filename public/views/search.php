@@ -28,7 +28,7 @@
         <div class="parent" id="not-sticky">
             <nav class="dark">
                 <a href="/"><img class="logo" src="public/materials/logo_dark.svg" alt="Guard logo"></a>
-                <?php include('nav.php');?>
+                <?php include('nav.php'); ?>
             </nav>
             <div id="scroll-form">
                 <div id="choose-type-form" method="post">
@@ -54,19 +54,6 @@
                             <span class="text-type">Wszystkie</span>
                         </label>
                     </div>
-
-                    <!--                    <div id="shelter">-->
-                    <!--                        <div class="select">-->
-                    <!--                            <select name="shelter" id="shelter-list">-->
-                    <!--                                <option value="">Wybierz schronisko</option>-->
-                    <!--                                <option value="all">Wszystkie</option>-->
-                    <!--                                <option value="krakow">Schronisko w Krakowie</option>-->
-                    <!--                                <option value="nowy">Schronisko w Nowym Sączu</option>-->
-                    <!--                                <option value="tarnow">Schronisko w Tarnowie</option>-->
-                    <!--                            </select>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-
                     <div id="gender">
                         <div id="checkboxes">
                             <input type="checkbox" name="genderCheck" value="man" id="man1"/>
@@ -84,20 +71,6 @@
                     <div class="local-container scroll">
                         <input class="full-width" name="local" type="text" placeholder="Podaj lokalizację">
                     </div>
-<!--                    <div id="Lokalizacja">-->
-<!--                        <div class="local-container">-->
-<!--                            <input name="local" type="text" placeholder="Podaj lokalizację">-->
-<!--                            <div class="select">-->
-<!--                                <select name="distance" id="distance-list">-->
-<!--                                    <option value="">+0 km</option>-->
-<!--                                    <option value="5">+5 km</option>-->
-<!--                                    <option value="15">+15 km</option>-->
-<!--                                    <option value="50">+ 50 km</option>-->
-<!--                                </select>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
                     <div id="color">
                         <div id="checkboxes">
                             <input type="checkbox" name="color" value="black" id="black"/>
@@ -216,7 +189,8 @@
                         <div id="shelter-address">
                             ul. <?= $projects[0]['shelter']->getStreet() ?> <?= $projects[0]['shelter']->getStreetNumber() ?></div>
                     </div>
-                    <a class="tooltip" id="icon-container" href="https://www.google.com/maps/search/?api=1&query=<?=$projects[0]['shelter']->getCity()?>+<?=$projects[0]['shelter']->getStreet()?>+<?=$projects[0]['shelter']->getStreetNumber()?>">
+                    <a class="tooltip" id="icon-container"
+                       href="https://www.google.com/maps/search/?api=1&query=<?= $projects[0]['shelter']->getCity() ?>+<?= $projects[0]['shelter']->getStreet() ?>+<?= $projects[0]['shelter']->getStreetNumber() ?>">
                         <i class="fas fa-map-marked-alt"></i>
                         <span class="tooltiptext">Pokaż na mapie</span>
                     </a>
@@ -328,7 +302,7 @@
                 <i class="fas fa-map-marker-alt"></i>
                 <div id="map-text">
                     <div id="shelter-name"></div>
-                    <div id="shelter-address">ul. </div>
+                    <div id="shelter-address">ul.</div>
                 </div>
                 <div id="icon-container">
                     <i class="fas fa-map-marked-alt"></i>

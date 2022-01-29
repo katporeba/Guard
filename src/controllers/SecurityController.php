@@ -6,7 +6,6 @@ require_once __DIR__ .'/../models/User.php';
 require_once __DIR__ .'/../models/Shelter.php';
 require_once __DIR__.'/../repository/UserRepository.php';
 
-
 class SecurityController extends AppController {
     private $userRepository;
 
@@ -36,7 +35,6 @@ class SecurityController extends AppController {
         if(!password_verify($password, $user->getPassword()))
             return $this->render('login', ['messages' => ['Wrong password!']]);
 
-//        setcookie("user_email", $user->getEmail(), time()+ 360, "/");
         $userId = $this->userRepository->getUserDetailsId($user);
         $this->userRepository->log($userId,true);
 
@@ -85,6 +83,10 @@ class SecurityController extends AppController {
         if (empty($_POST['terms'])) {
             return $this->render($template, ['messages' => ['Nie zaakceptowano warunków']]);
         }
+        $emailCheck = $this->userRepository->checkIfEmailAlreadyExist($email);
+        if($emailCheck) {
+            return $this->render($template, ['messages' => ['Użytkownik z takim e-mailem już istnieje']]);
+        }
 
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $user = new User($email, $hashed_password);
@@ -101,14 +103,6 @@ class SecurityController extends AppController {
     }
 
     public function unsetSession(){
-//        if (isset($_SESSION['user']))
-//            unset($_SESSION['user']);
-//
-//        if (isset($_SESSION['userId']))
-//            unset($_SESSION['userId']);
-//
-//        if (isset($_SESSION['shelter']))
-//            unset($_SESSION['shelter']);
         session_unset();
     }
 }

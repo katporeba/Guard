@@ -63,5 +63,7 @@ function validatePassword() {
 
 emailInput.addEventListener('keyup', validateEmail);
 confirmedPasswordInput.addEventListener('keyup', validatePassword);
-postalCodeInput.addEventListener('keyup', validatePostalCode);
-websiteUrl.addEventListener('keyup', validateUrl);
+if(postalCodeInput!==null)
+    postalCodeInput.addEventListener('keyup', validatePostalCode);
+if(websiteUrl!==null)
+    websiteUrl.addEventListener('keyup', validateUrl);

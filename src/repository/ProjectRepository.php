@@ -28,6 +28,9 @@ class ProjectRepository extends Repository {
         );
     }
 
+    /**
+     * @throws Exception
+     */
     public function addProject(Project $project, Animal $animal, Graph $graph): void {
         $date = new DateTime("now", new DateTimeZone('Europe/Warsaw'));
         $db = $this->database->connect();
@@ -50,7 +53,6 @@ class ProjectRepository extends Repository {
             INSERT INTO public."Animal" (name, age, gender, size, health, color, weight, "id_Graph", "id_Animal_type")
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         ');
-
 
         $stmt2 = $this->database->connect()->prepare('
             INSERT INTO public."Project" (title, description, "id_Shelter", "id_Animal", "created_at", photo)
@@ -92,8 +94,7 @@ class ProjectRepository extends Repository {
 
     public function getProjects(): array {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public."Project" NATURAL JOIN public."Animal" NATURAL JOIN public."Shelter" 
-                NATURAL JOIN public."User" NATURAL JOIN public."Animal_type" NATURAL JOIN public."Graph" ORDER BY "created_at" DESC;
+            SELECT * FROM public."Projects_Desc"
         ');
         $stmt->execute();
         $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -159,23 +160,18 @@ class ProjectRepository extends Repository {
             $stmt = $this->database->connect()->prepare('
             DELETE FROM public."Favourites" WHERE "id_Project" = :idProject AND "id_Fav_User" = :idUser
          ');
-            $stmt->bindParam(':idProject', $id, PDO::PARAM_INT);
-            $stmt->bindParam(':idUser', $_SESSION["userId"], PDO::PARAM_INT);
-
-            $stmt->execute();
         }
         else {
             $stmt = $this->database->connect()->prepare('
             INSERT INTO public."Favourites"("id_Fav_User", "id_Project") VALUES(:idUser, :idProject)
          ');
-            $stmt->bindParam(':idProject', $id, PDO::PARAM_INT);
-            $stmt->bindParam(':idUser', $_SESSION["userId"], PDO::PARAM_INT);
-
-            $stmt->execute();
         }
+        $stmt->bindParam(':idProject', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':idUser', $_SESSION["userId"], PDO::PARAM_INT);
+        $stmt->execute();
     }
 
-    public function checkIfInFavourites(int $id){
+    public function checkIfInFavourites(int $id) {
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public."Favourites" WHERE "id_Project" = :idProject AND "id_Fav_User" = :idUser
          ');
@@ -197,7 +193,6 @@ class ProjectRepository extends Repository {
         foreach ($projects as $project){
             $result[] = $this->createObject($project);
         }
-
         return $result;
     }
 
@@ -233,8 +228,7 @@ class ProjectRepository extends Repository {
 
             "user" => new User(
                 $project['email'],
-                $project['password'],
-                $project['username']
+                $project['password']
             ),
 
             "graph" => new Graph(
@@ -245,8 +239,6 @@ class ProjectRepository extends Repository {
             ),
 
             "date" => $project['created_at'],
-//            "checkfav" => $this->checkIfInFavourites($project['id_Project'])
         );
     }
-
 }

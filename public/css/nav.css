@@ -83,7 +83,6 @@ a:hover, a:active {
     display: none;
 }
 
-/* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 
     nav {
@@ -163,7 +162,6 @@ a:hover, a:active {
     }
 
 
-/*    button */
     .hamburger {
         display: initial;
         margin-right: 1em;

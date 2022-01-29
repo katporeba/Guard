@@ -8,19 +8,16 @@ function giveLike() {
 }
 
 function changeIfInFavourites(container){
-    if(container.classList.contains("1")) {
+    if(container.classList.contains("1"))
         changeHeart();
-    }
 }
 
 function changeHeart(){
     const symbol = likeContainer.firstElementChild.className;
-    if(symbol === "far fa-heart") {
+    if(symbol === "far fa-heart")
         likeContainer.innerHTML = "<i class=\"fas fa-heart\">";
-    }
-    else  {
+    else
         likeContainer.innerHTML = "<i class=\"far fa-heart\">";
-    }
 }
 
 likeContainer.addEventListener("click", giveLike);

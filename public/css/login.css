@@ -13,7 +13,7 @@ body {
     height: 6em;
 }
 
-.shelter .parent {
+#shelter .parent {
     scroll-snap-align: start;
 }
 
@@ -70,6 +70,10 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+#shelter #left-container {
+    scroll-snap-align: none;
 }
 
 
@@ -507,7 +511,6 @@ form {
         }
     }
 
-    /* Small devices (portrait tablets and large phones, 600px and up) */
     @media only screen and (min-width: 700px) {
         #main-text {
             font-size: 30px;
@@ -570,7 +573,6 @@ form {
     }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) and (max-width: 1200px){
     #main-text {
         font-size: 30px;

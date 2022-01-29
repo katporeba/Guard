@@ -6,10 +6,6 @@ class DefaultController extends AppController {
         $this->render('dashboard');
     }
 
-    public function chooseAnimal() {
-        $this->render('choose-animal');
-    }
-
     public function signUp() {
         $this->render('signin');
     }

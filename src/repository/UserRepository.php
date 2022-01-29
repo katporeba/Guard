@@ -13,10 +13,8 @@ class UserRepository extends Repository {
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
 
-        // tworzymy jako tablica asocjacyjna
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        //trzeba rzucic wyjątek
         if ($user == false) {
             return null;
         }
@@ -29,14 +27,13 @@ class UserRepository extends Repository {
 
     public function addUser(User $user, $shelter) {
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO public."User" (email, password, "logged_in")
+            INSERT INTO public."User" (email, password)
             VALUES (?, ?)
         ');
 
         $stmt->execute([
             $user->getEmail(),
-            $user->getPassword(),
-            false
+            $user->getPassword()
         ]);
 
         if($shelter != null) {
@@ -87,6 +84,20 @@ class UserRepository extends Repository {
             return "personal";
     }
 
+    public function checkIfEmailAlreadyExist(string $email): bool {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public."User" WHERE "email" = :email
+        ');
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($data['id_User'] != null) {
+            return true;
+        }
+        else
+            return false;
+    }
+
     public function log(int $id, bool $boolValue) {
         $stmt = $this->database->connect()->prepare('
             UPDATE public."User" SET "logged_in" = :boolValue WHERE "id_User" = :id
@@ -95,5 +106,4 @@ class UserRepository extends Repository {
         $stmt->bindParam(':boolValue', $boolValue, PDO::PARAM_BOOL);
         $stmt->execute();
     }
-
 }

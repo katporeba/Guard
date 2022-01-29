@@ -265,7 +265,6 @@ select::-ms-expand {
     color: #969696;
 }
 
-
 #gender #checkboxes{
     margin-top:0;
     display: flex;
@@ -317,7 +316,7 @@ select::-ms-expand {
 
 .desc-container textarea[name="post-desc"]  {
     padding-top: 1em;
-    height: auto;
+    height: 10em;
     font-family: 'Poppins';
     font-size: 12px;
 }
@@ -1023,11 +1022,7 @@ a {
     display: flex;
     flex-direction: column;
     margin-top: 7em;
-
-    /*margin-top: 3em;*/
-    /*margin-left: 2em;*/
     width: 100%;
-
 }
 
 #main-text-title {
@@ -1091,7 +1086,7 @@ a {
 }
 
 #second-one {
-    padding-top:4em;
+    padding-top:6em;
 }
 
 #second-one > * {
@@ -1122,7 +1117,6 @@ a {
     margin:auto;
 }
 
-/* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 800px) {
     #main-text-fav {
         align-items: center;
@@ -1155,7 +1149,6 @@ a {
     }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 800px){
      #posts:not(.fav) > div:first-child {
          min-width: 600px;
@@ -1182,7 +1175,6 @@ a {
     }
 }
 
-/* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 992px) {
     #search #two-rows {
         flex-direction: column;
@@ -1359,7 +1351,6 @@ a {
     }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) and (max-width: 1200px){
     #search #photo-container img{
         height: 20em;
@@ -1393,5 +1384,4 @@ a {
     #choose #main-text b{
         font-size: 30px;
     }
-
 }

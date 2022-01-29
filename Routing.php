@@ -28,7 +28,19 @@ class Routing {
         $action = $action ?: 'index';
 
         $id = $urlParts[1] ?? '';
-        // TODO walidacja czy id faktycznie jest liczbą
-        $object->$action($id);
+        $object->$action(self::toNumber($id));
+    }
+
+    public static function toNumber($val) {
+        if (is_numeric($val)) {
+            return (int)$val;
+        }
+        else if($val == '') {
+            return $val;
+        }
+        else {
+            trigger_error("Cannot cast $val to a number", E_USER_WARNING);
+            return null;
+        }
     }
 }

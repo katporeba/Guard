@@ -7,7 +7,6 @@ selectFilter.onchange = function(e){
 };
 
 let text = {};
-let iter = 0;
 
 search.addEventListener("click", eventHandler);
 document.onkeydown = function(e){
@@ -19,9 +18,7 @@ document.onkeydown = function(e){
 function eventHandler (event) {
     text = {};
     event.preventDefault();
-
     getFormInput();
-    console.log(text);
 
     fetch('/searchBy', {
         method: 'POST',
@@ -68,7 +65,7 @@ function getAllCheckedCheckboxes(className, name) {
 
 function getCheckedRadio(name) {
     radio = document.querySelector('input[name='+name+']:checked');
-    if(radio===null || radio.value=="all" )
+    if(radio===null || radio.value==="all" )
         tmpObject = {[name] : '%'};
     else
         tmpObject = {[radio.name] : radio.value};
@@ -88,12 +85,11 @@ function getInputValue(name, check, allSymbol) {
 
 function getHealth(name) {
     item = document.querySelector("input[name="+name+"]");
-    if(item.value=="healthy" && item.checked)
+    if(item.value==="healthy" && item.checked)
         tmpObject = {[item.name] : 'Zdrowy/a'};
     else
         tmpObject = {[item.name] : '%'};
     text = Object.assign({}, text, tmpObject);
-
 }
 
 function getValueFromSelect(name) {

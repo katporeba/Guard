@@ -16,36 +16,35 @@
 
 <body>
 
-    <div class="container signin">
-        <div class="parent">
-            <nav class="light">
-                <a href="/"><img class="logo" src="public/materials/logo_dark.svg" alt="Guard logo"></a>
-                <?php include('nav.php');?>
-            </nav>
+<div class="container signin">
+    <div class="parent">
+        <nav class="light">
+            <a href="/"><img class="logo" src="public/materials/logo_dark.svg" alt="Guard logo"></a>
+            <?php include('nav.php');?>
+        </nav>
+    </div>
+    <div id="img-container">
+        <div class="pics">
+            <img src="public/materials/wave/small/1_front.png" alt="" unselectable="on">
+            <img src="public/materials/wave/small/2.png" alt="" unselectable="on">
+            <img src="public/materials/wave/small/3.png" alt="" unselectable="on">
         </div>
-        <div id="img-container">
-            <div class="pics">
-                <img src="public/materials/wave/small/1_front.png" alt="" unselectable="on">
-                <img src="public/materials/wave/small/2.png" alt="" unselectable="on">
-                <img src="public/materials/wave/small/3.png" alt="" unselectable="on">
+        <img id="background-pic3" src="public/materials/handshake.gif">
+    </div>
+    <div class="left-side">
+        <div id="main-text"><b>Zarejestruj się</b> i zyskaj dodatkowe funkcje</div>
+        <div id="no-account">Posiadasz już konto? <a href="/login"><b>Zaloguj się</b></a></div>
+        <div id="choose-type-container">
+            <div onclick="location.href='/signUpPersonal'" style="cursor:pointer" id="personal-account">
+                <img src="public/materials/person.svg">
+                <span class="text-type">Jestem <b>osobą prywatną</b></span>
             </div>
-            <img id="background-pic3" src="public/materials/handshake.gif">
-        </div>
-        <div class="left-side">
-            <div id="main-text"><b>Zarejestruj się</b> i zyskaj dodatkowe funkcje</div>
-            <div id="no-account">Posiadasz już konto? <a href="/login"><b>Zaloguj się</b></a></div>
-            <div id="choose-type-container">
-                <div onclick="location.href='/signUpPersonal'" style="cursor:pointer" id="personal-account">
-                     <img src="public/materials/person.svg">
-                    <span class="text-type">Jestem <b>osobą prywatną</b></span>
-                </div>
-                <div onclick="location.href='/signUpShelter'" style="cursor:pointer" id="shelter-account">
-                     <img src="public/materials/shelter.svg">
-                    <span class="text-type">Jestem <b>schroniskiem</b></span>
-                </div>
-
+            <div onclick="location.href='/signUpShelter'" style="cursor:pointer" id="shelter-account">
+                <img src="public/materials/shelter.svg">
+                <span class="text-type">Jestem <b>schroniskiem</b></span>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
